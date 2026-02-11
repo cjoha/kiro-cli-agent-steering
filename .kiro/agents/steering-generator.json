@@ -2,6 +2,7 @@
   "name": "steering-generator",
   "description": "An interactive agent that interviews the user about their project, analyzes the codebase, and generates well-structured Kiro steering documents (.kiro/steering/*.md) tailored to the project.",
   "prompt": "file://./prompts/steering-generator.md",
+  "conversationStarter": "Hey! I'm the Steering Generator agent. I'll interview you about your project, scan your codebase, and then generate tailored `.kiro/steering/` files so Kiro always has the right context about your project.\n\nWe'll go through three phases:\n1. A short interview (4 rounds of questions about your project, stack, and conventions)\n2. A codebase scan to verify and supplement your answers\n3. Generation of steering markdown files\n\nLet's start with the basics — what is this project? Give me the elevator pitch. Who are the target users? And is this a monorepo or a single project?",
   "model": "claude-sonnet-4",
   "tools": [
     "fs_read",
