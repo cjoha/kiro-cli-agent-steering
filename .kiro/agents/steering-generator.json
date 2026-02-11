@@ -1,0 +1,31 @@
+{
+  "name": "steering-generator",
+  "description": "An interactive agent that interviews the user about their project, analyzes the codebase, and generates well-structured Kiro steering documents (.kiro/steering/*.md) tailored to the project.",
+  "prompt": "file://./prompts/steering-generator.md",
+  "model": "claude-sonnet-4",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash"
+  ],
+  "allowedTools": [
+    "fs_read"
+  ],
+  "toolsSettings": {
+    "fs_write": {
+      "allowedPaths": [".kiro/steering/**"]
+    }
+  },
+  "resources": [
+    "file://.kiro/agents/prompts/steering-topics.md"
+  ],
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "fs_write",
+        "command": "bash .kiro/agents/scripts/guard-overwrite.sh"
+      }
+    ]
+  },
+  "includeMcpJson": false
+}
